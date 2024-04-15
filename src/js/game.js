@@ -5,6 +5,11 @@
 let tuttiFruttiGameSingleton;
 
 class TuttiFruttiGame {
+    #RANDOM_INTEGER_DELAY = 250;
+    #CSS_ANIMATIONS_LONG_DELAY = 2000;
+    #CSS_ANIMATIONS_LARGE_DELAY = 400;
+    #CSS_ANIMATIONS_SHORT_DELAY = 300;
+
     static $i(locale = {}) {
         tuttiFruttiGameSingleton = tuttiFruttiGameSingleton || new TuttiFruttiGame(locale);
 
@@ -12,10 +17,6 @@ class TuttiFruttiGame {
     }
 
     constructor(locale = {}) {
-        this.RANDOM_INTEGER_DELAY = 1;
-        this.CSS_ANIMATIONS_LONG_DELAY = 2000;
-        this.CSS_ANIMATIONS_LARGE_DELAY = 400;
-        this.CSS_ANIMATIONS_SHORT_DELAY = 300;
         this.ALL_LETTERS = 'ABCDEFGHIJKLMNOPQRSTUV'.split('');
         this.PLAYED_LETTERS = [];
         this.AVAILABLE_LETTERS = this.ALL_LETTERS;
@@ -30,10 +31,14 @@ class TuttiFruttiGame {
         this._toggleAppOverlay();
     }
 
-    _setLetterInGame(letter = '') {
+    _setLetterInGame(letter = '', cb) {
         document.querySelector('#letter-in-game .app-main__letter-in-game-letter').innerText = letter;
         if (letter) {
             document.querySelector(`#letter-${letter.toLowerCase()}`).classList.toggle('ready');
+        }
+
+        if (cb instanceof Function) {
+            setTimeout(() => cb(), this.#CSS_ANIMATIONS_LARGE_DELAY);
         }
     }
 
@@ -70,7 +75,7 @@ class TuttiFruttiGame {
         return new Promise((resolve) => {
             setTimeout(
                 () => resolve(Math.floor(Math.random() * (Math.floor(max) - Math.floor(min) + 1) + Math.floor(min))),
-                this.RANDOM_INTEGER_DELAY
+                this.#RANDOM_INTEGER_DELAY
             );
         });
     }
@@ -89,10 +94,10 @@ class TuttiFruttiGame {
 
         if (isDisplayed) {
             overlay.classList.add('toggle');
-            setTimeout(() => overlay.classList.add('hidden'), this.CSS_ANIMATIONS_LARGE_DELAY);
+            setTimeout(() => overlay.classList.add('hidden'), this.#CSS_ANIMATIONS_LARGE_DELAY);
         } else {
             overlay.classList.remove('hidden');
-            setTimeout(() => overlay.classList.remove('toggle'), this.CSS_ANIMATIONS_SHORT_DELAY);
+            setTimeout(() => overlay.classList.remove('toggle'), this.#CSS_ANIMATIONS_SHORT_DELAY);
         }
     }
 
@@ -139,10 +144,11 @@ class TuttiFruttiGame {
                     this.PLAYED_LETTERS.push(letter);
                     this.AVAILABLE_LETTERS = this.ALL_LETTERS.filter((letter) => !this.PLAYED_LETTERS.includes(letter));
 
-                    this._setLetterInGame(letter);
-                    this._toggleGameOverlay();
-                    this._evalPlayedLetters();
-                    setTimeout(this._toggleLetterInGame, this.CSS_ANIMATIONS_LONG_DELAY);
+                    this._setLetterInGame(letter, () => {
+                        this._toggleGameOverlay();
+                        this._evalPlayedLetters();
+                        this._toggleLetterInGame();
+                    });
                 });
             }
         });
@@ -176,7 +182,7 @@ class TuttiFruttiGame {
     _toggleAppOverlay() {
         const appOverlay = document.querySelector('#app-overlay');
         appOverlay.classList.toggle('app-overlay--slide');
-        setTimeout(() => appOverlay.classList.toggle('hide'), this.CSS_ANIMATIONS_LONG_DELAY);
+        setTimeout(() => appOverlay.classList.toggle('hide'), this.#CSS_ANIMATIONS_LONG_DELAY);
     }
 }
 

@@ -1,6 +1,6 @@
 {
     "name": "@amjs/tutti-frutti",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "private": true,
     "description": "Tutti-Frutti game mobile app",
     "main": "index.js",

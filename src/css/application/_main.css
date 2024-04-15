@@ -1,0 +1,60 @@
+.app-main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+    overflow-y: auto;
+}
+
+.app-main__all-letters,
+.app-main__letter-in-game,
+.app-main__no-more-letters,
+.app-main__actions {
+    display: flex;
+    width: 100%;
+}
+
+.app-main__letter-in-game {
+    flex-grow: 1;
+    padding: 1rem;
+}
+
+.app-main__all-letters,
+.app-main__no-more-letters,
+.app-main__actions {
+    margin: 0.5rem 0;
+}
+
+.app-main__all-letters {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+    max-width: 100%;
+    padding: 0 0.5rem;
+    overflow: hidden;
+}
+
+.app-main__no-more-letters {
+    margin-top: 0;
+}
+
+.app-main__no-more-letters p {
+    color: transparent;
+    font-size: 0.75rem;
+    transition: color 0.4s ease-in-out;
+}
+
+.app-main__no-more-letters p.show {
+    color: var(--color-red);
+}
+
+.app-main__letter-in-game {
+    flex-grow: 1;
+}
+
+.app-main__letter-in-game-letter {
+    font-size: 20rem;
+    transition: display 0.4s ease-in-out;
+}

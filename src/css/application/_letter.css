@@ -1,0 +1,17 @@
+.letter {
+    margin: 0.15rem 0.25rem;
+    font-size: 1.15rem;
+    color: var(--color-grey);
+}
+
+.letter:first-child {
+    margin-left: 0;
+}
+
+.letter:last-child {
+    margin-right: 0;
+}
+
+.letter.ready {
+    color: var(--color-black);
+}

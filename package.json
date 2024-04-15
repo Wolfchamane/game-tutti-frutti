@@ -1,0 +1,17 @@
+{
+    "name": "@amjs/tutti-frutti",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Tutti-Frutti game mobile app",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "format:check": "npx prettier . --check",
+        "format:fix": "npx prettier . --write"
+    },
+    "author": "Arturo Martínez Díaz <arturo.martinez@amartinez.dev>",
+    "license": "SEE LICENSE IN LICENSE FILE",
+    "devDependencies": {
+        "prettier": "3.2.5"
+    }
+}

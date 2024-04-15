@@ -1,0 +1,18 @@
+button {
+    display: block;
+    margin: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    border: 0;
+    text-transform: uppercase;
+}
+
+button:focus {
+    outline: 0;
+}
+
+button.primary {
+    color: var(--color-white);
+    font-weight: var(--font-bolder);
+    background: var(--color-primary);
+}

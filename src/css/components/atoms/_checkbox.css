@@ -1,0 +1,4 @@
+input[type='checkbox']:disabled ~ span {
+    color: var(--color-grey);
+    pointer-events: none;
+}

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1" />
+        <meta name="author" content="Arturo Martínez <arturo.martinez@amartinez.dev>" />
+        <meta name="copyright" content="2024" />
+        <title>Tutti Frutti</title>
+        <link rel="stylesheet" href="./src/css/index.css" />
+    </head>
+    <body class="app">
+        <div class="app-overlay" id="app-overlay">
+            <h1 class="app-overlay__main-title">Tutti Frutti</h1>
+        </div>
+        <header class="app-header center">
+            <h1 class="app-header__main-title">Tutti Frutti</h1>
+        </header>
+        <main class="app-main">
+            <div class="app-main__all-letters center" id="all-letters"></div>
+            <div class="app-main__no-more-letters center" id="no-more-letters-error">
+                <p id="no-more-letters-error__text"></p>
+            </div>
+            <div class="app-main__letter-in-game center" id="letter-in-game">
+                <p class="app-main__letter-in-game-letter"></p>
+            </div>
+            <div class="app-main__actions center">
+                <ul>
+                    <li id="special-characters-row">
+                        <label for="special-characters">
+                            <input type="checkbox" id="special-characters" name="special-characters" />
+                            <span id="special-characters__text"></span>
+                        </label>
+                    </li>
+                    <li id="generate-random-letter-row">
+                        <button id="generate-random-letter" class="primary">
+                            <span id="generate-random-letter__text"></span>
+                        </button>
+                    </li>
+                    <li id="reset-game-row" class="hide">
+                        <button id="reset-game" disabled>
+                            <span id="reset-game__text"></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="app-main__overlay" id="overlay">
+                <p class="app-main__overlay-text"></p>
+            </div>
+        </main>
+        <footer class="app-footer center">
+            <p>Arturo Martínez &copy; 2024</p>
+        </footer>
+        <script src="./src/app.js" type="module"></script>
+    </body>
+</html>

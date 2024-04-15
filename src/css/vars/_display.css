@@ -1,0 +1,10 @@
+.center {
+    align-items: center;
+    justify-content: center;
+}
+
+.hide {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+}
